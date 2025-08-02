@@ -1,7 +1,9 @@
 // Enhanced script.js for Clean and Healthy Area application
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu functionality
+    // RESPONSIVE MOBILE MENU FUNCTIONALITY
+    // Handles hamburger menu toggle for mobile devices
+    // Provides touch-friendly navigation on smaller screens
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -423,8 +425,11 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => ripple.remove(), 600);
         });
     }
-    // Card/button hover/active effects (microinteractions) - responsive safe
-    if (window.innerWidth > 768) { // Only on desktop
+    // RESPONSIVE INTERACTION DESIGN
+    // Card/button hover/active effects (microinteractions)
+    // RESPONSIVE SAFETY: Only apply hover effects on desktop to prevent
+    // sticky hover states on touch devices
+    if (window.innerWidth > 768) { // Only on desktop (768px breakpoint)
         document.querySelectorAll('.group, .rounded-2xl, .shadow-lg, .shadow-xl').forEach(card => {
             card.addEventListener('mouseenter', () => card.classList.add('ring-2', 'ring-emerald-300'));
             card.addEventListener('mouseleave', () => card.classList.remove('ring-2', 'ring-emerald-300'));

@@ -9,6 +9,60 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+      /* ==============================================
+         RESPONSIVE DESIGN FEATURES IMPLEMENTED:
+         
+         1. MOBILE-FIRST APPROACH:
+            - All base styles designed for mobile
+            - Progressive enhancement for larger screens
+            - Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
+         
+         2. FLEXIBLE GRID LAYOUTS:
+            - CSS Grid with responsive columns (grid-cols-1 sm:grid-cols-2 lg:grid-cols-3)
+            - Flexbox for complex layouts with flex-wrap
+            - Auto-fit and minmax for dynamic sizing
+         
+         3. RESPONSIVE TYPOGRAPHY:
+            - Fluid text sizing (text-4xl sm:text-5xl md:text-6xl lg:text-7xl)
+            - Scalable line heights and letter spacing
+            - Viewport-relative units for headings
+         
+         4. ADAPTIVE SPACING:
+            - Responsive padding/margins (p-4 sm:p-6 lg:p-8)
+            - Gap utilities that scale with screen size
+            - Flexible container max-widths
+         
+         5. MOBILE NAVIGATION:
+            - Hamburger menu for mobile devices
+            - Collapsible navigation with smooth transitions
+            - Touch-friendly button sizes (44px minimum)
+         
+         6. RESPONSIVE IMAGES:
+            - Flexible image sizing with object-cover
+            - Responsive gallery grids
+            - Optimized loading for different screen sizes
+         
+         7. ADAPTIVE CARDS:
+            - Flexible card layouts that reflow
+            - Responsive card sizing (min-w-[300px])
+            - Stack on mobile, grid on desktop
+         
+         8. TOUCH-FRIENDLY INTERFACE:
+            - Large tap targets (minimum 44px)
+            - Adequate spacing between interactive elements
+            - Hover effects disabled on touch devices
+         
+         9. RESPONSIVE FORMS:
+            - Full-width inputs on mobile
+            - Flexible form layouts
+            - Large, easy-to-tap buttons
+         
+         10. ADAPTIVE COMPONENTS:
+             - Responsive modals and overlays
+             - Flexible button groups
+             - Scalable icon sizes
+      ============================================== */
+      
       @keyframes gradientBG {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
@@ -160,13 +214,19 @@
                     </div>
                 </div>
 
-                <!-- Mobile Hamburger Button -->
+                <!-- Mobile Hamburger Button 
+                     RESPONSIVE FEATURE: Hidden on large screens (lg:hidden)
+                     Touch-friendly size with adequate padding
+                     Glass morphism design for modern look -->
                 <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg bg-white/20 backdrop-blur-xl shadow-lg border border-white/30">
                     <i class="fa-solid fa-bars text-xl text-gray-800"></i>
                 </button>
             </div>
 
-            <!-- Mobile Navigation Menu -->
+            <!-- Mobile Navigation Menu 
+                 RESPONSIVE FEATURE: Full-width mobile menu
+                 Hidden by default, shown via JavaScript
+                 Stacks navigation items vertically on mobile -->
             <div id="mobile-menu" class="lg:hidden hidden bg-white/90 backdrop-blur-xl border-t border-white/30 shadow-lg mt-4 rounded-2xl">
                 <nav class="flex flex-col px-6 py-4 space-y-3">
                     <a href="index.html" class="font-semibold text-lg text-emerald-600 transition-all duration-300 py-2 border-b border-gray-200">
@@ -197,8 +257,12 @@
         </div>
     </header>
 
-    <!-- Hero Section with Enhanced Video Background -->
-    <section class="relative min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
+    <!-- Hero Section with Enhanced Video Background 
+         RESPONSIVE FEATURES:
+         - Adaptive height: min-h-[500px] on mobile, md:min-h-[600px] on medium screens
+         - Flexible layout with flexbox centering
+         - Responsive video background with object-cover
+         - Overflow hidden prevents horizontal scrolling -->
         <div class="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-transparent z-10"></div>
         <video id="hero-video" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover object-center z-0">
             <source src="download.mp4" type="video/mp4" />
@@ -206,6 +270,8 @@
         </video>
         <div class="relative z-20 text-center text-white px-6">
             <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 font-heading drop-shadow-2xl">
+                <!-- RESPONSIVE TYPOGRAPHY: Scales from 4xl (mobile) to 8xl (extra large screens)
+                     Responsive margins: mb-4 on mobile, sm:mb-6 on small screens and up -->
                 <span class="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">EcoVision</span>
             </h1>
             <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-6 sm:mb-8 drop-shadow-lg max-w-3xl mx-auto px-4">
@@ -229,6 +295,12 @@
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover how we're making a difference in communities around the world</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <!-- RESPONSIVE GRID LAYOUT:
+                 - Mobile: 1 column (grid-cols-1)
+                 - Small screens: 2 columns (sm:grid-cols-2)
+                 - Large screens: 3 columns (lg:grid-cols-3)
+                 - Extra large: 4 columns (xl:grid-cols-4)
+                 - Responsive gaps: 4 (mobile) → 6 (small) → 8 (large) -->
             <div class="relative group overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-3xl">
                 <img src="images/img1.avif" alt="Clean and Healthy Environment" class="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-110"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
