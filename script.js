@@ -389,20 +389,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         lastScrollTop = scrollTop;
     });
-    // Auto-hide navbar on scroll
+    // Auto-hide navbar on scroll - simplified version
     const mainNavbar = document.getElementById('main-navbar');
-    let lastScrollY = window.scrollY;
-    window.addEventListener('scroll', () => {
-        if (!mainNavbar) return;
-        if (window.scrollY > lastScrollY && window.scrollY > 80) {
-            mainNavbar.classList.add('-translate-y-full');
-            mainNavbar.classList.remove('translate-y-0');
-        } else {
-            mainNavbar.classList.remove('-translate-y-full');
-            mainNavbar.classList.add('translate-y-0');
-        }
-        lastScrollY = window.scrollY;
-    });
+    if (mainNavbar) {
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 80) {
+                mainNavbar.style.transform = 'translateY(-100%)';
+            } else {
+                mainNavbar.style.transform = 'translateY(0)';
+            }
+            lastScrollY = window.scrollY;
+        });
+    }
 
     // Optional: Ripple effect for floating report button
     const floatingBtn = document.getElementById('floating-report-btn');
@@ -424,16 +423,18 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => ripple.remove(), 600);
         });
     }
-    // Card/button hover/active effects (microinteractions)
-    document.querySelectorAll('.group, .rounded-2xl, .shadow-lg, .shadow-xl').forEach(card => {
-        card.addEventListener('mouseenter', () => card.classList.add('ring-2', 'ring-emerald-300'));
-        card.addEventListener('mouseleave', () => card.classList.remove('ring-2', 'ring-emerald-300'));
-    });
-    document.querySelectorAll('button, a').forEach(btn => {
-        btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
-        btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
-        btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
-    });
+    // Card/button hover/active effects (microinteractions) - responsive safe
+    if (window.innerWidth > 768) { // Only on desktop
+        document.querySelectorAll('.group, .rounded-2xl, .shadow-lg, .shadow-xl').forEach(card => {
+            card.addEventListener('mouseenter', () => card.classList.add('ring-2', 'ring-emerald-300'));
+            card.addEventListener('mouseleave', () => card.classList.remove('ring-2', 'ring-emerald-300'));
+        });
+        document.querySelectorAll('button, a').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+    }
     // Re-initialize AOS on page load (in case of dynamic content)
     if (window.AOS) AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic' });
 
