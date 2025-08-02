@@ -1,5 +1,45 @@
 // Waste Management System Frontend JS
 
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        const mobileMenuIcon = mobileMenuButton.querySelector('i');
+
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuIcon.classList.remove('fa-xmark');
+                mobileMenuIcon.classList.add('fa-bars');
+            } else {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.classList.remove('fa-xmark');
+                mobileMenuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.classList.remove('fa-xmark');
+                mobileMenuIcon.classList.add('fa-bars');
+            });
+        });
+    }
+});
+
 // Add fetchReports function for backend report fetching
 async function fetchReports() {
     try {
@@ -638,7 +678,8 @@ Array.from(document.querySelectorAll('img[data-lightbox]')).forEach((img, idx, a
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', function() {
         const group = img.getAttribute('data-lightbox');
-        const groupImgs = Array.from(document.querySelectorAll(`img[data-lightbox='${group}']`));
+        const groupImgs = Array.from```text
+(document.querySelectorAll(`img[data-lightbox='${group}']`));
         openLightbox(group, groupImgs.indexOf(img));
     });
 });
@@ -756,4 +797,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
     renderStatusList();
     renderDashboard();
-}); 
+});
