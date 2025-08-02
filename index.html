@@ -162,6 +162,88 @@
         box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
         transform: translateY(-1px);
       }
+
+      /* Mobile-specific improvements */
+      @media (max-width: 640px) {
+        /* Ensure touch targets are at least 44px */
+        button, a, input, select, textarea {
+          min-height: 44px;
+          min-width: 44px;
+        }
+        
+        /* Improve text readability on small screens */
+        body {
+          font-size: 16px; /* Prevent zoom on iOS */
+        }
+        
+        /* Better spacing for mobile */
+        .space-y-4 > * + * {
+          margin-top: 1rem;
+        }
+        
+        /* Improve button spacing */
+        .gap-2 {
+          gap: 0.5rem;
+        }
+        
+        /* Better modal sizing */
+        .max-w-md {
+          max-width: 90vw;
+          margin: 1rem;
+        }
+        
+        /* Improve form inputs */
+        input, textarea, select {
+          font-size: 16px; /* Prevent zoom on iOS */
+          padding: 0.75rem;
+        }
+        
+        /* Better card spacing */
+        .p-4 {
+          padding: 1rem;
+        }
+        
+        /* Improve navigation touch targets */
+        nav a {
+          padding: 0.75rem 1rem;
+        }
+      }
+      
+      /* Tablet improvements */
+      @media (min-width: 641px) and (max-width: 1024px) {
+        /* Better spacing for tablets */
+        .gap-4 {
+          gap: 1.5rem;
+        }
+        
+        /* Improve text sizing */
+        .text-lg {
+          font-size: 1.125rem;
+        }
+      }
+      
+      /* Prevent horizontal scroll on mobile */
+      body {
+        overflow-x: hidden;
+      }
+      
+      /* Better image handling on mobile */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Improve button accessibility */
+      button:focus, a:focus {
+        outline: 2px solid #10b981;
+        outline-offset: 2px;
+      }
+      
+      /* Better form accessibility */
+      input:focus, textarea:focus, select:focus {
+        outline: 2px solid #10b981;
+        outline-offset: 2px;
+      }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 min-h-screen font-sans text-gray-800 overflow-x-hidden">
@@ -169,14 +251,14 @@
     <header id="main-navbar" class="sticky top-0 z-50 bg-white/10 backdrop-blur-xl border-b border-white/20 transition-all duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3 sm:gap-6">
+                <div class="flex items-center gap-2 sm:gap-3 lg:gap-6">
                     <div class="relative">
-                        <img src="image3.webp" alt="Clean and Healthy Area Logo" class="h-12 w-12 sm:h-16 sm:w-16 rounded-2xl object-cover border-4 border-white/30 shadow-2xl"/>
+                        <img src="image3.webp" alt="Clean and Healthy Area Logo" class="h-10 w-10 sm:h-12 sm:w-12 lg:h-16 lg:w-16 rounded-2xl object-cover border-4 border-white/30 shadow-2xl"/>
                         <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-2xl blur opacity-30"></div>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="text-xl sm:text-2xl lg:text-3xl font-black text-gray-800 tracking-tight font-heading">Clean and Healthy Area</span>
-                        <span id="slogan-rotator" class="text-gray-600 text-sm sm:text-base lg:text-lg font-medium leading-tight">Cleaner Communities, Greener Future</span>
+                        <span class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-black text-gray-800 tracking-tight font-heading">Clean and Healthy Area</span>
+                        <span id="slogan-rotator" class="text-gray-600 text-xs sm:text-sm lg:text-base xl:text-lg font-medium leading-tight">Cleaner Communities, Greener Future</span>
                     </div>
                 </div>
                 
@@ -214,41 +296,35 @@
                     </div>
                 </div>
 
-                <!-- Mobile Hamburger Button 
-                     RESPONSIVE FEATURE: Hidden on large screens (lg:hidden)
-                     Touch-friendly size with adequate padding
-                     Glass morphism design for modern look -->
-                <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg bg-white/20 backdrop-blur-xl shadow-lg border border-white/30">
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-button" class="lg:hidden p-3 rounded-lg bg-white/20 backdrop-blur-xl shadow-lg border border-white/30">
                     <i class="fa-solid fa-bars text-xl text-gray-800"></i>
                 </button>
             </div>
 
-            <!-- Mobile Navigation Menu 
-                 RESPONSIVE FEATURE: Full-width mobile menu
-                 Hidden by default, shown via JavaScript
-                 Stacks navigation items vertically on mobile -->
-            <div id="mobile-menu" class="lg:hidden hidden bg-white/90 backdrop-blur-xl border-t border-white/30 shadow-lg mt-4 rounded-2xl">
-                <nav class="flex flex-col px-6 py-4 space-y-3">
-                    <a href="index.html" class="font-semibold text-lg text-emerald-600 transition-all duration-300 py-2 border-b border-gray-200">
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden bg-white/95 backdrop-blur-xl border-t border-white/30 shadow-lg mt-4 rounded-2xl">
+                <nav class="flex flex-col px-4 sm:px-6 py-4 space-y-2">
+                    <a href="index.html" class="font-semibold text-base sm:text-lg text-emerald-600 transition-all duration-300 py-3 border-b border-gray-200">
                         <i class="fa-solid fa-home mr-3"></i>Home
                     </a>
-                    <a href="report.html" class="font-semibold text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-2 border-b border-gray-200">
+                    <a href="report.html" class="font-semibold text-base sm:text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-3 border-b border-gray-200">
                         <i class="fa-solid fa-flag mr-3"></i>Report
                     </a>
-                    <a href="#dashboard-section" class="font-semibold text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-2 border-b border-gray-200">
+                    <a href="#dashboard-section" class="font-semibold text-base sm:text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-3 border-b border-gray-200">
                         <i class="fa-solid fa-chart-line mr-3"></i>Dashboard
                     </a>
-                    <a href="#about" class="font-semibold text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-2 border-b border-gray-200">
+                    <a href="#about" class="font-semibold text-base sm:text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-3 border-b border-gray-200">
                         <i class="fa-solid fa-info-circle mr-3"></i>About
                     </a>
-                    <a href="#contact" class="font-semibold text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-2 border-b border-gray-200">
+                    <a href="#contact" class="font-semibold text-base sm:text-lg text-gray-800 hover:text-emerald-600 transition-all duration-300 py-3 border-b border-gray-200">
                         <i class="fa-solid fa-envelope mr-3"></i>Contact
                     </a>
                     <div class="flex flex-col gap-3 pt-4">
-                        <a href="signin.html" class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-xl font-semibold text-center">
+                        <a href="signin.html" class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-3 rounded-xl font-semibold text-center">
                             <i class="fa-solid fa-sign-in-alt mr-2"></i>Sign In
                         </a>
-                        <a href="signup.html" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-xl font-semibold text-center">
+                        <a href="signup.html" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-3 rounded-xl font-semibold text-center">
                             <i class="fa-solid fa-user-plus mr-2"></i>Sign Up
                         </a>
                     </div>
@@ -329,49 +405,49 @@
     </section>
 
     <!-- Enhanced Filter Bar and Legend -->
-    <section class="max-w-7xl mx-auto px-6 mt-16 mb-8">
-      <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/30">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div class="flex flex-wrap gap-3 items-center">
-            <button class="type-filter-btn bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="all">All</button>
-            <button class="type-filter-btn bg-gradient-to-r from-emerald-100 to-emerald-200 text-emerald-700 px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="garbage"><i class="fa-solid fa-trash mr-2"></i> Garbage</button>
-            <button class="type-filter-btn bg-gradient-to-r from-red-100 to-red-200 text-red-700 px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="animal_death"><i class="fa-solid fa-skull-crossbones mr-2"></i> Animal Death</button>
-            <button class="type-filter-btn bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="animal_adopt"><i class="fa-solid fa-paw mr-2"></i> Animal Adopt</button>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 mb-8">
+      <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-white/30">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
+          <div class="flex flex-wrap gap-2 sm:gap-3 items-center">
+            <button class="type-filter-btn bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="all">All</button>
+            <button class="type-filter-btn bg-gradient-to-r from-emerald-100 to-emerald-200 text-emerald-700 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="garbage"><i class="fa-solid fa-trash mr-1 sm:mr-2"></i> <span class="hidden sm:inline">Garbage</span><span class="sm:hidden">Garbage</span></button>
+            <button class="type-filter-btn bg-gradient-to-r from-red-100 to-red-200 text-red-700 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="animal_death"><i class="fa-solid fa-skull-crossbones mr-1 sm:mr-2"></i> <span class="hidden sm:inline">Animal Death</span><span class="sm:hidden">Death</span></button>
+            <button class="type-filter-btn bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" data-type="animal_adopt"><i class="fa-solid fa-paw mr-1 sm:mr-2"></i> <span class="hidden sm:inline">Animal Adopt</span><span class="sm:hidden">Adopt</span></button>
           </div>
-          <div class="flex gap-6 items-center text-sm">
-            <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-xl shadow-md"><i class="fa-solid fa-trash text-emerald-500"></i> Garbage Cleaning</span>
-            <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-xl shadow-md"><i class="fa-solid fa-skull-crossbones text-red-500"></i> Animal Death</span>
-            <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-xl shadow-md"><i class="fa-solid fa-paw text-blue-500"></i> Animal Adoption/Care</span>
+          <div class="flex flex-wrap gap-2 sm:gap-4 lg:gap-6 items-center text-xs sm:text-sm">
+            <span class="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 bg-white/80 rounded-lg sm:rounded-xl shadow-md"><i class="fa-solid fa-trash text-emerald-500"></i> <span class="hidden sm:inline">Garbage Cleaning</span><span class="sm:hidden">Garbage</span></span>
+            <span class="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 bg-white/80 rounded-lg sm:rounded-xl shadow-md"><i class="fa-solid fa-skull-crossbones text-red-500"></i> <span class="hidden sm:inline">Animal Death</span><span class="sm:hidden">Death</span></span>
+            <span class="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 bg-white/80 rounded-lg sm:rounded-xl shadow-md"><i class="fa-solid fa-paw text-blue-500"></i> <span class="hidden sm:inline">Animal Adoption/Care</span><span class="sm:hidden">Adoption</span></span>
           </div>
         </div>
-        <div id="type-summary" class="mt-4 text-emerald-700 font-semibold text-lg"></div>
+        <div id="type-summary" class="mt-4 text-emerald-700 font-semibold text-sm sm:text-base lg:text-lg"></div>
       </div>
     </section>
 
     <!-- Enhanced Notification Banner -->
-    <div id="priority-banner" class="hidden max-w-7xl mx-auto px-6 py-4 mb-6 bg-gradient-to-r from-red-100 to-red-200 border-l-4 border-red-500 text-red-800 font-bold flex items-center gap-3 shadow-2xl rounded-2xl animate-pulse">
-      <i class="fa-solid fa-triangle-exclamation text-2xl"></i> 
-      <span class="text-lg">Urgent: There are unresolved Animal Death reports that need immediate attention!</span>
+    <div id="priority-banner" class="hidden max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 mb-6 bg-gradient-to-r from-red-100 to-red-200 border-l-4 border-red-500 text-red-800 font-bold flex items-center gap-2 sm:gap-3 shadow-2xl rounded-xl sm:rounded-2xl animate-pulse">
+      <i class="fa-solid fa-triangle-exclamation text-lg sm:text-2xl"></i> 
+      <span class="text-sm sm:text-base lg:text-lg">Urgent: There are unresolved Animal Death reports that need immediate attention!</span>
     </div>
 
     <!-- Top Priority Section -->
     <section id="top-priority-section" class="max-w-7xl mx-auto px-6 mb-8"></section>
 
     <!-- Main Content with Enhanced Cards -->
-    <main class="max-w-7xl mx-auto px-6 mt-16 flex flex-col lg:flex-row gap-12 items-start">
-        <div class="flex flex-col gap-8 flex-[2_1_0%] w-full">
-            <section id="status-section" class="bg-white/20 backdrop-blur-xl rounded-3xl p-8 min-h-[300px] flex-1 shadow-2xl border border-white/30">
-                <h2 class="text-3xl font-black mb-6 text-gray-800 font-heading">Status Tracker</h2>
-                <div id="status-list" class="space-y-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+        <div class="flex flex-col gap-6 lg:gap-8 flex-[2_1_0%] w-full">
+            <section id="status-section" class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 sm:p-6 lg:p-8 min-h-[300px] flex-1 shadow-2xl border border-white/30">
+                <h2 class="text-2xl sm:text-3xl font-black mb-4 sm:mb-6 text-gray-800 font-heading">Status Tracker</h2>
+                <div id="status-list" class="space-y-4 sm:space-y-6">
                     <!-- Status cards will be injected here -->
                 </div>
             </section>
-            <section id="dashboard-section" class="bg-white/20 backdrop-blur-xl rounded-3xl p-8 min-h-[300px] flex-1 shadow-2xl border border-white/30">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-3xl font-black text-gray-800 font-heading">Reported Issues Dashboard</h2>
-                    <button id="clear-reports" class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105">Clear All Reports</button>
+            <section id="dashboard-section" class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 sm:p-6 lg:p-8 min-h-[300px] flex-1 shadow-2xl border border-white/30">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 mb-4 sm:mb-6">
+                    <h2 class="text-2xl sm:text-3xl font-black text-gray-800 font-heading">Reported Issues Dashboard</h2>
+                    <button id="clear-reports" class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 text-sm sm:text-base">Clear All Reports</button>
                 </div>
-                <div id="dashboard-map" class="flex flex-wrap gap-6 min-h-[200px]">
+                <div id="dashboard-map" class="flex flex-wrap gap-4 sm:gap-6 min-h-[200px]">
                     <!-- Map or list of reports will be shown here -->
                 </div>
             </section>
@@ -379,79 +455,79 @@
     </main>
 
     <!-- Enhanced img2 Gallery Section -->
-    <section class="max-w-6xl mx-auto mt-24 px-6 mb-16">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-black text-gray-800 mb-4 font-heading">Community Impact</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">See the real difference our community makes</p>
+    <section class="max-w-6xl mx-auto mt-16 sm:mt-24 px-4 sm:px-6 mb-12 sm:mb-16">
+        <div class="text-center mb-8 sm:mb-12">
+            <h2 class="text-3xl sm:text-4xl font-black text-gray-800 mb-4 font-heading">Community Impact</h2>
+            <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">See the real difference our community makes</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-                <img src="img2/img2-1.jpg" alt="Animal Reverence" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
+                <img src="img2/img2-1.jpg" alt="Animal Reverence" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <span class="text-white font-bold text-xl mb-6 drop-shadow-lg">Together for a Greener Tomorrow</span>
+                    <span class="text-white font-bold text-lg sm:text-xl mb-6 drop-shadow-lg">Together for a Greener Tomorrow</span>
                 </div>
             </div>
             <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-                <img src="img2/img2-2.jpg" alt="Your Report Makes a Difference" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
+                <img src="img2/img2-2.jpg" alt="Your Report Makes a Difference" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <span class="text-white font-bold text-xl mb-6 drop-shadow-lg">Your Report Makes a Difference</span>
+                    <span class="text-white font-bold text-lg sm:text-xl mb-6 drop-shadow-lg">Your Report Makes a Difference</span>
                 </div>
             </div>
             <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-                <img src="img2/img2-3.webp" alt="Cleaner Communities, Brighter Future" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
+                <img src="img2/img2-3.webp" alt="Cleaner Communities, Brighter Future" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <span class="text-white font-bold text-xl mb-6 drop-shadow-lg">Cleaner Communities, Brighter Future</span>
+                    <span class="text-white font-bold text-lg sm:text-xl mb-6 drop-shadow-lg">Cleaner Communities, Brighter Future</span>
                 </div>
             </div>
             <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-                <img src="img2/img2-4.jpg" alt="Act Green, Live Clean" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
+                <img src="img2/img2-4.jpg" alt="Act Green, Live Clean" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-img2" data-aos="zoom-in"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <span class="text-white font-bold text-xl mb-6 drop-shadow-lg">Act Green, Live Clean</span>
+                    <span class="text-white font-bold text-lg sm:text-xl mb-6 drop-shadow-lg">Act Green, Live Clean</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Enhanced Animal Gallery Section -->
-    <section class="max-w-6xl mx-auto mt-24 px-6 mb-16">
-      <h2 class="text-4xl font-black text-emerald-700 mb-12 text-center flex items-center justify-center gap-4 font-heading">
-        <i class="fa-solid fa-paw text-4xl text-emerald-400"></i> Animal Reverence & Protection
+    <section class="max-w-6xl mx-auto mt-16 sm:mt-24 px-4 sm:px-6 mb-12 sm:mb-16">
+      <h2 class="text-3xl sm:text-4xl font-black text-emerald-700 mb-8 sm:mb-12 text-center flex items-center justify-center gap-2 sm:gap-4 font-heading">
+        <i class="fa-solid fa-paw text-3xl sm:text-4xl text-emerald-400"></i> Animal Reverence & Protection
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-8">
         <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-          <img src="imgd/1d.jpg" alt="Animals are revered as gods in India" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
+          <img src="imgd/1d.jpg" alt="Animals are revered as gods in India" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <span class="text-white font-bold text-lg mb-6 drop-shadow-lg text-center">Animals are revered as gods in India</span>
+            <span class="text-white font-bold text-sm sm:text-lg mb-6 drop-shadow-lg text-center">Animals are revered as gods in India</span>
           </div>
         </div>
         <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-          <img src="imgd/2d.jpg" alt="Save and protect animals" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
+          <img src="imgd/2d.jpg" alt="Save and protect animals" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <span class="text-white font-bold text-lg mb-6 drop-shadow-lg text-center">Save and protect animals</span>
+            <span class="text-white font-bold text-sm sm:text-lg mb-6 drop-shadow-lg text-center">Save and protect animals</span>
           </div>
         </div>
         <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-          <img src="imgd/3d.jpg" alt="Compassion for all living beings" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
+          <img src="imgd/3d.jpg" alt="Compassion for all living beings" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <span class="text-white font-bold text-lg mb-6 drop-shadow-lg text-center">Compassion for all living beings</span>
+            <span class="text-white font-bold text-sm sm:text-lg mb-6 drop-shadow-lg text-center">Compassion for all living beings</span>
           </div>
         </div>
         <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-          <img src="imgd/4d.jpg" alt="Every life matters: protect our animals" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
+          <img src="imgd/4d.jpg" alt="Every life matters: protect our animals" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <span class="text-white font-bold text-lg mb-6 drop-shadow-lg text-center">Every life matters: protect our animals</span>
+            <span class="text-white font-bold text-sm sm:text-lg mb-6 drop-shadow-lg text-center">Every life matters: protect our animals</span>
           </div>
         </div>
         <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-          <img src="imgd/5d.jpg" alt="Kindness to animals is a mark of a great nation" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
+          <img src="imgd/5d.jpg" alt="Kindness to animals is a mark of a great nation" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <span class="text-white font-bold text-lg mb-6 drop-shadow-lg text-center">Kindness to animals is a mark of a great nation</span>
+            <span class="text-white font-bold text-sm sm:text-lg mb-6 drop-shadow-lg text-center">Kindness to animals is a mark of a great nation</span>
           </div>
         </div>
         <div class="relative group overflow-hidden rounded-3xl shadow-2xl card-hover">
-          <img src="imgd/6d.jpg" alt="Protect the voiceless, preserve our future" class="w-full h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
+          <img src="imgd/6d.jpg" alt="Protect the voiceless, preserve our future" class="w-full h-64 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-110" data-lightbox="gallery-imgd" data-aos="zoom-in"/>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <span class="text-white font-bold text-lg mb-6 drop-shadow-lg text-center">Protect the voiceless, preserve our future</span>
+            <span class="text-white font-bold text-sm sm:text-lg mb-6 drop-shadow-lg text-center">Protect the voiceless, preserve our future</span>
           </div>
         </div>
       </div>
